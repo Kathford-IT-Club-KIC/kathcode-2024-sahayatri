@@ -1,0 +1,6 @@
+{
+    "require": {
+        "fortawesome/font-awesome": "^6.5",
+        "phayes/geophp": "^1.2"
+    }
+}
