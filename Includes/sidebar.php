@@ -13,7 +13,10 @@
             <a href="createPoolAlert.php" class="block px-4 py-2 rounded hover:bg-gray-700 border-b border-gray-700">Create Pool Alert</a>
         </li>
         <li>
-            <a href="createPoolRequests.php" class="block px-4 py-2 rounded hover:bg-gray-700 border-b border-gray-700">Create Pool Requests</a>
+            <a href="createPoolRequest.php" class="block px-4 py-2 rounded hover:bg-gray-700 border-b border-gray-700">Create Pool Requests</a>
+        </li>
+        <li>
+            <a href="myPoolRequests.php" class="block px-4 py-2 rounded hover:bg-gray-700 border-b border-gray-700">My Pool Requests</a>
         </li>
     </ul>
 </div>
