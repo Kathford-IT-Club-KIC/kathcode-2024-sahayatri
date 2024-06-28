@@ -16,7 +16,7 @@ if (isset($data['requestId']) && isset($data['alertId']) && isset($data['applied
     $remainingSeats = $vacantSeats - $appliedSeats;
 
     if ($remainingSeats == 0) {
-        $alertSql = "UPDATE poolalerts SET status = 'booked' WHERE id = $alertId";
+        $alertSql = "UPDATE poolalerts SET status = 'booked', vacantSeats = $remainingSeats WHERE id = $alertId";
     } else {
         $alertSql = "UPDATE poolalerts SET vacantSeats = $remainingSeats WHERE id = $alertId";
     }
