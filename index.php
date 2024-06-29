@@ -1,6 +1,64 @@
-<?php 
-error_reporting(0);
-include('Includes/server.php') ?>
+<?php
+include 'Includes/dbcon.php';
+
+if(isset($_POST['login_user'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Use prepared statement to prevent SQL injection
+    $query = "SELECT id, firstName, lastName, isRider FROM users WHERE email=? AND password=?";
+    $stmt = $conn->prepare($query);
+    
+    if ($stmt) {
+        $stmt->bind_param("ss", $email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows == 1) {
+            $user = $result->fetch_assoc();
+            if($user['isRider'] == "yes"){
+                $userId = $user['id'];
+                $firstName = $user['firstName'];
+                $lastName = $user['lastName'];
+
+                // Start session and store user data
+                session_start();
+                $_SESSION['userId'] = $userId;
+                $_SESSION['email'] = $email;
+                $_SESSION['firstName'] = $firstName;
+                $_SESSION['lastName'] = $lastName;
+
+                header('location: Rider/createPoolRequest.php');
+                exit();
+            }
+            else{
+                $userId = $user['id'];
+                $firstName = $user['firstName'];
+                $lastName = $user['lastName'];
+
+                // Start session and store user data
+                session_start();
+                $_SESSION['userId'] = $userId;
+                $_SESSION['email'] = $email;
+                $_SESSION['firstName'] = $firstName;
+                $_SESSION['lastName'] = $lastName;
+
+                header('location: User/createPoolRequest.php');
+                exit();
+            }
+        } else {
+            echo "Invalid email or password";
+        }
+
+        $stmt->close();
+    } else {
+        echo "Error preparing the statement: " . $conn->error;
+    }
+
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +66,12 @@ include('Includes/server.php') ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="img/logo/favicon.png">
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-100" style="background-color: #1f2937;">
     <div class="w-full max-w-sm bg-white rounded-lg shadow-md p-6">
         <h2 class="text-2xl font-semibold text-center text-gray-700">Login</h2>
-        <form class="mt-4" method="post" action="Includes/server.php" >
+        <form class="mt-4" method="post">
 	
             <div class="mb-4">
                 <label class="block text-gray-700">Email Address</label>

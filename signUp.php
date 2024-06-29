@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="img/logo/favicon.png">
+
     <style>
         body {
             height: 100%;
@@ -40,7 +42,7 @@
     <div class="bg-gray-100 p-8 rounded-lg shadow-lg max-w-6xl w-full h-full overflow-y-auto">
         <h2 class="text-2xl font-bold mb-6 text-center">Sign Up Driver</h2>
 
-        <form id="signupForm" method="post" action="Includes/server.php" enctype="multipart/form-data">
+        <form id="signupForm" method="post" action="server.php" enctype="multipart/form-data">
             <div class="form-section flex space-x-4 mb-4">
                 <div class="w-1/3">
                     <label class="block text-gray-700" for="first_name">First Name</label>
@@ -48,12 +50,12 @@
                         class="w-full px-4 py-4 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                         type="text" id="first_name" name="first_name" required>
                 </div>
-                <!-- <div class="w-1/3">
+                <div class="w-1/3">
                     <label class="block text-gray-700" for="middle_name">Middle Name</label>
                     <input
                         class="w-full px-4 py-4 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                         type="text" id="middle_name" name="middle_name" required>
-                </div> -->
+                </div>
                 <div class="w-1/3">
                     <label class="block text-gray-700" for="last_name">Last Name</label>
                     <input
@@ -151,14 +153,14 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="form-section mb-4">
+            <div class="form-section mb-4">
                 <div class="w-1/2">
                     <label class="block text-gray-700" for="username">Username</label>
                     <input
                         class="w-full px-4 py-4 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                         type="text" id="username" name="username" required>
                 </div>
-            </div> -->
+            </div>
             <div class="form-section mb-4">
                 <label class="block text-gray-700" for="password">Password</label>
                 <input
